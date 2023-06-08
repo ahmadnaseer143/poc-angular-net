@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mt-5">
+        <div class="card-header text-center">
+          <h2>Sign Up</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="formValue" (ngSubmit)="signup()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Enter your name"
+                formControlName="name"
+              />
+              <div
+                *ngIf="
+                  formValue.get('name')?.hasError('required') &&
+                  formValue.get('name')?.touched
+                "
+                class="text-danger"
+              >
+                Name is required
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter your email"
+                formControlName="email"
+              />
+              <div
+                *ngIf="
+                  formValue.get('email')?.hasError('required') &&
+                  formValue.get('email')?.touched
+                "
+                class="text-danger"
+              >
+                Email is required
+              </div>
+              <div
+                *ngIf="
+                  formValue.get('email')?.hasError('email') &&
+                  formValue.get('email')?.touched
+                "
+                class="text-danger"
+              >
+                Invalid email format
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="mobile" class="form-label">Mobile</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="mobile"
+                placeholder="Enter your mobile number"
+                formControlName="mobile"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Enter your password"
+                formControlName="password"
+              />
+              <div
+                *ngIf="
+                  formValue.get('password')?.hasError('required') &&
+                  formValue.get('password')?.touched
+                "
+                class="text-danger"
+              >
+                Password is required
+              </div>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+          </form>
+        </div>
+        <a class="mx-3" routerLink="/login">Already a User? Click to Login!</a>
+      </div>
+    </div>
+  </div>
+</div>

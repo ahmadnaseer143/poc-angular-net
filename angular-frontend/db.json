@@ -1,0 +1,55 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "naseer ahmad",
+      "email": "anaseer942@gmail.com",
+      "mobile": "+923180189925"
+    },
+    {
+      "id": 2,
+      "name": "naseer ",
+      "email": "anaseer942@gmail.com",
+      "mobile": "+923180189925"
+    },
+    {
+      "id": 4,
+      "name": "nass",
+      "email": "nas@gmail.com",
+      "mobile": "+923180189925"
+    }
+  ],
+  "signupusers": [
+    {
+      "name": "naseer ahmad",
+      "email": "anaseer942@gmail.com",
+      "mobile": "+923180189925",
+      "password": "dsasdasd",
+      "id": 1
+    },
+    {
+      "name": "naseer ahmad",
+      "email": "asdas",
+      "mobile": "+923180189925",
+      "password": "asdasdas",
+      "id": 2
+    },
+    {
+      "name": "",
+      "email": "",
+      "mobile": "",
+      "password": "",
+      "id": 3
+    },
+    {
+      "name": "naseer ahmad",
+      "email": "nas@gmail.com",
+      "mobile": "+923180189925",
+      "password": "12345678",
+      "id": 4
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

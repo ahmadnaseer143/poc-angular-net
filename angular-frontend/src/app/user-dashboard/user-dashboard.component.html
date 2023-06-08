@@ -1,0 +1,183 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+    <h1 style="color: #ffff">Naseer Crud POC</h1>
+    <div class="d-flex">
+      <button
+        type="button"
+        class="btn btn-success mx-3"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        (click)="clickOnAdd()"
+      >
+        Add User
+      </button>
+      <button type="button" class="btn btn-danger" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.mobile }}</td>
+      <td>
+        <button class="btn btn-info" type="button" (click)="onEdit(user)">
+          <!-- data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+         -->
+          Edit
+        </button>
+        <button class="btn btn-danger mx-3" (click)="deleteUser(user.id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User Details</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="form-group">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Enter Name"
+                formControlName="name"
+              />
+              <div
+                *ngIf="
+                  formValue.get('name')?.hasError('required') &&
+                  formValue.get('name')?.touched
+                "
+                class="text-danger"
+              >
+                Name is required
+              </div>
+            </div>
+            <label for="exampleInputEmail1">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+              formControlName="email"
+            />
+            <div
+              *ngIf="
+                formValue.get('email')?.hasError('required') &&
+                formValue.get('email')?.touched
+              "
+              class="text-danger"
+            >
+              Email is required
+            </div>
+            <div
+              *ngIf="
+                formValue.get('email')?.hasError('email') &&
+                formValue.get('email')?.touched
+              "
+              class="text-danger"
+            >
+              Invalid email format
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mobile">Mobile No</label>
+            <input
+              type="text"
+              class="form-control"
+              id="mobile"
+              placeholder="Enter Mobile"
+              formControlName="mobile"
+            />
+            <div
+              *ngIf="
+                formValue.get('mobile')?.hasError('required') &&
+                formValue.get('mobile')?.touched
+              "
+              class="text-danger"
+            >
+              Mobile Number is required
+            </div>
+            <div
+              *ngIf="
+                formValue.get('mobile')?.hasError('pattern') &&
+                formValue.get('mobile')?.touched
+              "
+              class="text-danger"
+            >
+              Invalid mobile format. Correct Mobile pattern is : +923130139113
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="close"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          *ngIf="showAdd"
+          (click)="postUserDetails()"
+        >
+          Add User
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          *ngIf="showUpdate"
+          (click)="updateUserDetails()"
+        >
+          Update User
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
